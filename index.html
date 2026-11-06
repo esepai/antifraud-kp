@@ -63,6 +63,7 @@
 
   /* sections */
   section { padding-block: 72px; }
+  section { scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 60px); }
   section + section { border-top: 1px solid var(--line); }
   .eyebrow { font-size: 13px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
   h2 { font-size: clamp(27px, 3.4vw, 40px); line-height: 1.12; font-weight: 750; }
@@ -140,6 +141,8 @@
   .lbl { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; font-weight: 650; color: var(--muted); }
   .hero-p .lbl { color: #b6b2ff; }
   .amt { font-size: clamp(44px, 5vw, 64px); font-weight: 800; letter-spacing: -.035em; line-height: 1; margin-top: 16px; font-variant-numeric: tabular-nums; }
+  .kgs { font-size: 19px; font-weight: 650; color: var(--ink-2); margin-top: 10px; font-variant-numeric: tabular-nums; }
+  .hero-p .kgs { color: #d9dcf2; }
   .amt.sm { font-size: clamp(36px, 4vw, 48px); }
   .pcard .desc { color: var(--ink-2); margin-top: 14px; }
   .hero-p .desc { color: var(--navy-ink); }
@@ -233,7 +236,7 @@
       <div class="meta">
         <div>Правообладатель<b>ОсОО «Альберт и Азиз»</b></div>
         <div>Срок внедрения<b>10–20 рабочих дней</b></div>
-        <div>Стоимость решения<b>$10 000</b></div>
+        <div>Стоимость решения<b>$10 000 · ≈ 874 493 сом</b></div>
       </div>
     </div>
     <img class="shot zoom" src="img/dashboard.jpg" alt="Главная страница антифрод-системы" tabindex="0">
@@ -411,12 +414,14 @@
         <div class="pcard hero-p">
           <div class="lbl">Антифрод-система</div>
           <div class="amt">$10 000</div>
+          <div class="kgs">≈ 874 493 сом</div>
           <p class="desc">Неисключительное право использования решения под вашим брендом</p>
           <ul class="checks"><li>23 правила и веб-кабинет службы безопасности</li><li>Отчётность для НБКР</li><li>Полный комплект документов</li><li>Работа под вашим брендом</li></ul>
         </div>
         <div class="pcard">
           <div class="lbl">Доработка и интеграция</div>
           <div class="amt sm">$1 000 – 5 000</div>
+          <div class="kgs">≈ 87 449 – 437 247 сом</div>
           <p class="desc">Оценивается отдельно по результатам обследования</p>
           <ul class="checks"><li>Подключение к вашему процессингу</li><li>Доработка под действующее ПО</li><li>Зависит от архитектуры и модели бизнеса</li></ul>
         </div>
@@ -426,6 +431,7 @@
           <p class="desc">рабочих дней от подписания договора до ввода в эксплуатацию</p>
         </div>
       </div>
+      <p class="note">Суммы в сомах указаны справочно по официальному курсу НБКР на 06.11.2026: 1 USD = 87,4493 сом.</p>
     </div>
   </section>
 
@@ -452,8 +458,8 @@
     <p class="lead">Проведём демонстрацию, обследуем ваш платёжный контур и дадим точную оценку интеграции и сроков.</p>
     <div class="meta">
       <div>Правообладатель<b>ОсОО «Альберт и Азиз»</b></div>
-      <div>Решение<b>$10 000</b></div>
-      <div>Интеграция<b>$1 000 – 5 000</b></div>
+      <div>Решение<b>$10 000 · ≈ 874 493 сом</b></div>
+      <div>Интеграция<b>$1 000 – 5 000 · ≈ 87–437 тыс. сом</b></div>
       <div>Запуск<b>10–20 дней</b></div>
     </div>
   </div>
