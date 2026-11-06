@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Антифрод White Label</title>
+<style>
+  /* Layout: navy hero, then one readable column of sections; grids collapse to one column on phones. */
+  :root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --ink: #0f1729;
+    --ink-2: #3b4459;
+    --muted: #677086;
+    --line: #e1e5ee;
+    --accent: #4f46e5;
+    --accent-soft: #eceafe;
+    --navy: #0d1330;
+    --navy-ink: #c4c9e0;
+    --navy-muted: #9aa2c4;
+    --green: #129d6a; --green-soft: #e2f6ee;
+    --amber: #b8730c; --amber-soft: #fcf0dc;
+    --red: #d6324b; --red-soft: #fde5e9;
+    --font: -apple-system, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.55; -webkit-text-size-adjust: 100%; }
+  h1, h2, h3 { text-wrap: balance; margin: 0; letter-spacing: -0.015em; }
+  p { margin: 0; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+  /* header */
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--navy); }
+  .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: rgba(13,19,48,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff; }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+  .brand { font-weight: 700; font-size: 16px; letter-spacing: .01em; white-space: nowrap; }
+  .brand span { color: #a9a4ff; font-weight: 600; }
+  .top nav { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+  .top nav::-webkit-scrollbar { display: none; }
+  .top nav a { color: #d6d9ee; text-decoration: none; font-size: 14px; padding: 6px 12px; border-radius: 999px; white-space: nowrap; }
+  .top nav a:hover, .top nav a:focus-visible { background: rgba(255,255,255,.1); color: #fff; outline: none; }
+  .top nav a.cta { background: var(--accent); color: #fff; }
+  .top nav a.pdf { border: 1px solid rgba(255,255,255,.3); }
+
+  /* hero */
+  .hero { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; width: 900px; height: 900px; right: -300px; top: -380px; background: radial-gradient(closest-side, rgba(124,116,255,.5), transparent 70%); pointer-events: none; }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 72px 80px; }
+  .tag { display: inline-block; padding: 7px 14px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #cfd2ff; }
+  .hero h1 { font-size: clamp(34px, 5.2vw, 60px); line-height: 1.06; margin-top: 24px; font-weight: 750; }
+  .hero .sub { color: var(--navy-ink); font-size: clamp(17px, 1.6vw, 20px); margin-top: 20px; max-width: 34em; }
+  .hero .meta { display: flex; flex-wrap: wrap; gap: 20px 40px; margin-top: 36px; font-size: 14px; color: var(--navy-muted); }
+  .hero .meta b { display: block; color: #fff; font-size: 18px; font-weight: 650; margin-top: 2px; }
+  .hero .shot { border-radius: 14px; box-shadow: 0 30px 90px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.12); width: 100%; display: block; cursor: zoom-in; }
+
+  /* sections */
+  section { padding-block: 72px; }
+  section + section { border-top: 1px solid var(--line); }
+  .eyebrow { font-size: 13px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h2 { font-size: clamp(27px, 3.4vw, 40px); line-height: 1.12; font-weight: 750; }
+  .lead { font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); margin-top: 14px; max-width: 46em; }
+  .grid { display: grid; gap: 16px; margin-top: 32px; }
+  .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; min-width: 0; }
+  .card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+  .card p, .card li { color: var(--ink-2); font-size: 16px; }
+  ul.dots { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  ul.dots li { padding-left: 22px; position: relative; }
+  ul.dots li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+  .num { font-size: clamp(40px, 4.4vw, 54px); font-weight: 800; color: var(--accent); letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .num small { font-size: .45em; font-weight: 700; letter-spacing: 0; }
+  .stat p { margin-top: 10px; }
+
+  /* flow */
+  .flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 32px; counter-reset: s; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; position: relative; min-width: 0; }
+  .step .n { width: 34px; height: 34px; border-radius: 10px; background: var(--accent); color: #fff; font-weight: 750; display: grid; place-items: center; margin-bottom: 14px; }
+  .step h3 { font-size: 18px; margin-bottom: 6px; }
+  .step p { font-size: 15px; color: var(--ink-2); }
+  .dec { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+  .dec .card { display: grid; gap: 4px; }
+  .dec h3 { display: flex; align-items: center; gap: 10px; margin: 0; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+  .dec .score { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  /* rules */
+  .rhead { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .rhead h3 { margin: 0; }
+  .rhead .cnt { font-size: 32px; font-weight: 800; color: var(--accent); line-height: 1; }
+
+  /* compliance */
+  .comp { margin-top: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .row { display: grid; grid-template-columns: 110px minmax(0, 1fr) minmax(0, 1.3fr); gap: 20px; padding: 16px 24px; border-top: 1px solid var(--line); }
+  .row:first-child { border-top: 0; }
+  .row.h { background: #f0f2f8; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 650; }
+  .row .ch { font-weight: 700; }
+  .row .t { font-weight: 600; }
+  .row .r { color: var(--ink-2); }
+
+  /* screenshots */
+  .shots { display: grid; gap: 56px; margin-top: 40px; }
+  .shotrow { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 40px; align-items: center; }
+  .shotrow .txt h3 { font-size: clamp(22px, 2.4vw, 28px); font-weight: 750; }
+  .shotrow .txt p { color: var(--ink-2); margin-top: 10px; }
+  .shotrow .txt ul { margin-top: 14px; }
+  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .frame { background: var(--card); border: 1px solid #dde1ea; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(15,23,41,.12); margin: 0; min-width: 0; }
+  .frame .bar { height: 26px; background: #eef0f5; border-bottom: 1px solid #e1e4ec; display: flex; align-items: center; gap: 6px; padding: 0 12px; }
+  .frame .bar i { width: 9px; height: 9px; border-radius: 50%; background: #d3d7e1; }
+  .frame img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+  .frame figcaption { font-size: 14px; color: var(--muted); padding: 10px 14px; border-top: 1px solid var(--line); }
+  .frame figcaption b { color: var(--ink); font-weight: 650; }
+  .hint { font-size: 14px; color: var(--muted); margin-top: 14px; }
+
+  /* package */
+  .doc { display: flex; gap: 14px; align-items: flex-start; }
+  .doc .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; }
+  .doc h3 { font-size: 17px; margin-bottom: 4px; }
+  .doc p { font-size: 15px; color: var(--muted); }
+  .doc.main { background: var(--navy); border-color: var(--navy); }
+  .doc.main h3 { color: #fff; }
+  .doc.main p { color: var(--navy-ink); }
+  .doc.main .ic { background: rgba(255,255,255,.12); color: #fff; }
+
+  /* price */
+  .price { display: grid; grid-template-columns: 1.15fr 1fr .8fr; gap: 16px; margin-top: 32px; }
+  .pcard { border-radius: 22px; padding: 30px; background: var(--card); border: 1px solid var(--line); min-width: 0; }
+  .pcard.hero-p { background: var(--navy); color: #fff; border-color: var(--navy); position: relative; overflow: hidden; }
+  .pcard.hero-p::after { content: ""; position: absolute; width: 500px; height: 500px; right: -240px; top: -260px; background: radial-gradient(closest-side, rgba(124,116,255,.5), transparent 70%); pointer-events: none; }
+  .lbl { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; font-weight: 650; color: var(--muted); }
+  .hero-p .lbl { color: #b6b2ff; }
+  .amt { font-size: clamp(44px, 5vw, 64px); font-weight: 800; letter-spacing: -.035em; line-height: 1; margin-top: 16px; font-variant-numeric: tabular-nums; }
+  .amt.sm { font-size: clamp(36px, 4vw, 48px); }
+  .pcard .desc { color: var(--ink-2); margin-top: 14px; }
+  .hero-p .desc { color: var(--navy-ink); }
+  ul.checks { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 8px; }
+  ul.checks li { padding-left: 26px; position: relative; color: var(--ink-2); font-size: 16px; }
+  .hero-p ul.checks li { color: #e3e6f5; }
+  ul.checks li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+  .hero-p ul.checks li::before { color: #9f99ff; }
+
+  /* timeline */
+  .tl { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin-top: 40px; position: relative; }
+  .tl::before { content: ""; position: absolute; left: 0; right: 0; top: 21px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--accent), #7c74ff); }
+  .tl .s { position: relative; min-width: 0; }
+  .tl .d { width: 44px; height: 44px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); color: var(--accent); font-weight: 800; display: grid; place-items: center; position: relative; }
+  .tl .days { color: var(--accent); font-weight: 650; font-size: 14px; margin-top: 16px; font-variant-numeric: tabular-nums; }
+  .tl h3 { font-size: 18px; margin-top: 4px; }
+  .tl p { font-size: 15px; color: var(--ink-2); margin-top: 6px; }
+  .note { font-size: 14px; color: var(--muted); margin-top: 28px; }
+
+  /* closing */
+  .closing { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .closing::before { content: ""; position: absolute; width: 800px; height: 800px; left: -300px; bottom: -480px; background: radial-gradient(closest-side, rgba(124,116,255,.4), transparent 70%); pointer-events: none; }
+  .closing .wrap { position: relative; padding-block: 72px; }
+  .closing h2 { color: #fff; max-width: 22em; }
+  .closing .lead { color: var(--navy-ink); }
+  .closing .meta { display: flex; flex-wrap: wrap; gap: 20px 44px; margin-top: 36px; font-size: 14px; color: var(--navy-muted); }
+  .closing .meta b { display: block; color: #fff; font-size: 18px; margin-top: 2px; }
+
+  /* lightbox */
+  .lb { position: fixed; inset: 0; z-index: 50; background: rgba(8,11,28,.94); display: flex; align-items: center; justify-content: center; padding: calc(env(safe-area-inset-top, 0px) + 56px) max(12px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 16px) max(12px, env(safe-area-inset-left, 0px)); overflow: auto; }
+  .lb[hidden] { display: none; }
+  .lb img { max-width: 100%; max-height: 100%; border-radius: 10px; touch-action: pinch-zoom; }
+  .lb button { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 12px); right: max(12px, env(safe-area-inset-right, 0px)); background: rgba(255,255,255,.14); color: #fff; border: 0; border-radius: 999px; padding: 9px 16px; font: 600 15px var(--font); cursor: pointer; }
+  .lb button:focus-visible, .frame img:focus-visible, .hero .shot:focus-visible { outline: 3px solid #9f99ff; outline-offset: 2px; }
+
+  /* tablet */
+  @media (max-width: 980px) {
+    .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 48px 56px; }
+    .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .shotrow { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .price { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .price .pcard.hero-p { grid-column: 1 / -1; }
+    .tl { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .tl::before { left: 21px; right: auto; top: 0; bottom: 0; width: 3px; height: auto; background: linear-gradient(180deg, var(--accent), #7c74ff); }
+    .tl .s { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; }
+    .tl .s .d { grid-row: span 3; }
+    .tl .days { margin-top: 0; }
+  }
+  /* phone */
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    section { padding-block: 52px; }
+    .g2, .g3, .dec, .pair, .price { grid-template-columns: minmax(0, 1fr); }
+    .g4.stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .g4.stats .card { padding: 18px; }
+    .g4:not(.stats) { grid-template-columns: minmax(0, 1fr); }
+    .flow { grid-template-columns: minmax(0, 1fr); }
+    .row { grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 16px 18px; }
+    .row.h { display: none; }
+    .row .ch { color: var(--accent); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .top nav a:not(.cta):not(.pdf) { display: none; }
+    .card { padding: 20px; }
+    .pcard { padding: 24px; }
+  }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">Антифрод <span>· White Label</span></div>
+    <nav aria-label="Разделы">
+      <a href="#solution">Решение</a>
+      <a href="#ui">Интерфейс</a>
+      <a href="#package">Комплект</a>
+      <a href="#price" class="cta">Стоимость</a>
+      <a href="kp-antifraud.pdf" class="pdf" target="_blank" rel="noopener">PDF</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag">Коммерческое предложение</span>
+      <h1>Антифрод-система для платёжных систем Кыргызстана</h1>
+      <p class="sub">Готовое решение для мониторинга и блокировки мошеннических операций в реальном времени, соответствующее Положению НБКР об антифрод-системе.</p>
+      <div class="meta">
+        <div>Правообладатель<b>ОсОО «Альберт и Азиз»</b></div>
+        <div>Срок внедрения<b>10–20 рабочих дней</b></div>
+        <div>Стоимость решения<b>$10 000</b></div>
+      </div>
+    </div>
+    <img class="shot zoom" src="img/dashboard.jpg" alt="Главная страница антифрод-системы" tabindex="0">
+  </div>
+</div>
+
+<main>
+  <section id="why">
+    <div class="wrap">
+      <div class="eyebrow">Почему это нужно сейчас</div>
+      <h2>НБКР требует от платёжных организаций полноценную антифрод-систему</h2>
+      <p class="lead">Постановлением Правления НБКР от 31 октября 2025 г. № 2025-П-14/59-1-(ПС) утверждено Положение «О минимальных требованиях к системе противодействия внутреннему и внешнему мошенничеству (антифрод) в платёжных организациях / операторах платёжных систем Кыргызской Республики».</p>
+      <div class="grid g3">
+        <div class="card"><h3>Требования регулятора</h3><ul class="dots"><li>Контроль операций в реальном времени</li><li>Приостановка подозрительных операций</li><li>Реестр запрещённых идентификаторов</li><li>Ежеквартальный отчёт об эффективности</li></ul></div>
+        <div class="card"><h3>Риски бизнеса</h3><ul class="dots"><li>Прямые потери от мошенничества</li><li>Компрометация API-ключей партнёров</li><li>Дроп-счета и быстрый вывод средств</li><li>Замечания и санкции регулятора</li></ul></div>
+        <div class="card"><h3>Цена собственной разработки</h3><ul class="dots"><li>Месяцы работы команды</li><li>Экспертиза в правилах и НПА</li><li>Тестирование и документация</li><li>Риск не успеть к проверке</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solution">
+    <div class="wrap">
+      <div class="eyebrow">Решение</div>
+      <h2>Готовая система для вашего платёжного контура</h2>
+      <p class="lead">Ваша платёжная система отправляет каждую операцию на проверку и получает ответ: пропустить, отправить на проверку или заблокировать. Служба безопасности работает в собственном веб-кабинете.</p>
+      <div class="grid g4 stats">
+        <div class="card stat"><div class="num">23</div><p>правила выявления мошенничества, настраиваемых без программиста</p></div>
+        <div class="card stat"><div class="num">50–150<small> мс</small></div><p>время проверки одной операции</p></div>
+        <div class="card stat"><div class="num">8<small> глав</small></div><p>Положения НБКР (главы 2–9) закрыты функциями и документами</p></div>
+        <div class="card stat"><div class="num">450+</div><p>автотестов, включая тесты на проникновение (OWASP Top 10)</p></div>
+      </div>
+      <div class="grid g3">
+        <div class="card"><h3>Входящие и исходящие</h3><p>QR-платежи (стандарт QR НБКР), переводы и выплаты партнёров, вход мерчанта в кабинет</p></div>
+        <div class="card"><h3>Поведенческие профили</h3><p>Система знает «норму» каждого мерчанта за 90 дней и видит отклонения от неё</p></div>
+        <div class="card"><h3>Отчётность для НБКР</h3><p>Метрики по форме Приложения 1 и отчёт о нештатных ситуациях в Excel</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="eyebrow">Как это работает</div>
+      <h2>Проверка каждой операции за доли секунды</h2>
+      <div class="flow">
+        <div class="step"><div class="n">1</div><h3>Операция</h3><p>Платёжная система передаёт данные операции через REST API с ключом партнёра</p></div>
+        <div class="step"><div class="n">2</div><h3>Профиль</h3><p>Загружается поведенческий профиль получателя: средний чек, частота, известные IP</p></div>
+        <div class="step"><div class="n">3</div><h3>Правила</h3><p>Активные правила проверяют операцию с порогами, настроенными для вашей компании</p></div>
+        <div class="step"><div class="n">4</div><h3>Скоринг</h3><p>Сигналы взвешиваются в единый риск-скор от 0 до 100</p></div>
+        <div class="step"><div class="n">5</div><h3>Реакция</h3><p>Решение, инцидент, запись в журнал, письмо ответственному</p></div>
+      </div>
+      <div class="dec">
+        <div class="card"><h3><span class="dot" style="background:var(--green)"></span>Пропустить</h3><div class="score">Риск 0–39 · низкий</div><p>Операция проходит без вмешательства</p></div>
+        <div class="card"><h3><span class="dot" style="background:var(--amber)"></span>На проверку</h3><div class="score">Риск 40–69 · средний</div><p>Операция уходит в очередь оператора службы безопасности</p></div>
+        <div class="card"><h3><span class="dot" style="background:var(--red)"></span>Заблокировать</h3><div class="score">Риск 70–100 · высокий</div><p>Операция отклоняется, автоматически заводится инцидент</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rules">
+    <div class="wrap">
+      <div class="eyebrow">Каталог правил</div>
+      <h2>23 правила по базовым признакам мошенничества</h2>
+      <p class="lead">Пороги, окна и веса каждого правила меняются в интерфейсе и применяются мгновенно, без перезапуска.</p>
+      <div class="grid g4">
+        <div class="card"><div class="rhead"><h3>Базовые признаки</h3><span class="cnt">7</span></div><ul class="dots"><li>Аномальная сумма</li><li>Аномальная частота</li><li>Нетипичное время</li><li>Дробление сумм</li><li>Новый получатель</li><li>Лимит входящих</li><li>Чёрный список</li></ul></div>
+        <div class="card"><div class="rhead"><h3>QR и мерчанты</h3><span class="cnt">7</span></div><ul class="dots"><li>Темп генерации QR</li><li>Повторная оплата QR</li><li>Рост оборота мерчанта</li><li>Быстрый вывод средств</li><li>Комбинация признаков вывода</li><li>Подозрительный вход</li><li>Спящий счёт</li></ul></div>
+        <div class="card"><div class="rhead"><h3>Исходящие платежи</h3><span class="cnt">8</span></div><ul class="dots"><li>Лимиты суммы и дня</li><li>Частота исходящих</li><li>Всплеск исходящих</li><li>Дубликат платежа</li><li>Ночной исходящий</li><li>Новый получатель</li><li>Риск получателя</li><li>Новое устройство или IP</li></ul></div>
+        <div class="card"><div class="rhead"><h3>Композитный риск</h3><span class="cnt">1</span></div><p>Срабатывает при одновременном появлении двух и более независимых сигналов. Ловит сложные схемы, которые по отдельности выглядят безобидно.</p><p style="margin-top:12px">Защищает от компрометации API-ключа партнёра: письмо при входе с нового IP или устройства.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compliance">
+    <div class="wrap">
+      <div class="eyebrow">Соответствие регулятору</div>
+      <h2>Покрытие Положения НБКР об антифрод-системе</h2>
+      <div class="comp">
+        <div class="row h"><div>Глава</div><div>Требование</div><div>Как закрывается</div></div>
+        <div class="row"><div class="ch">Глава 2</div><div class="t">Политика и организационные меры</div><div class="r">Политика противодействия внутреннему и внешнему мошенничеству в комплекте поставки</div></div>
+        <div class="row"><div class="ch">Глава 3</div><div class="t">Техническая реализация антифрод-контроля</div><div class="r">Проверка каждой операции через API в реальном времени, журнал всех оценок и действий</div></div>
+        <div class="row"><div class="ch">Глава 4</div><div class="t">Категоризация рисков и действия по инцидентам</div><div class="r">Уровни риска низкий / средний / высокий, жизненный цикл инцидента, отчёт о нештатных ситуациях</div></div>
+        <div class="row"><div class="ch">Глава 5</div><div class="t">Базовые признаки мошеннических операций</div><div class="r">23 правила: сумма, частота, время, дробление, получатель, QR, вывод средств, исходящие</div></div>
+        <div class="row"><div class="ch">Глава 6</div><div class="t">Приостановка операций, взаимодействие с клиентами</div><div class="r">Блокировка и ручная проверка, приостановка идентификаторов до 30 дней, приём жалоб клиентов</div></div>
+        <div class="row"><div class="ch">Глава 7</div><div class="t">Список идентификаторов и мониторинг повторов</div><div class="r">Чёрный список (телефон, счёт, IP, устройство, QR) с историей изменений и автопополнением</div></div>
+        <div class="row"><div class="ch">Глава 8</div><div class="t">Оценка эффективности антифрод-системы</div><div class="r">Автоматический расчёт метрик Приложения 1: точность, полнота, ложные срабатывания, время реакции</div></div>
+        <div class="row"><div class="ch">Глава 9</div><div class="t">Тестирование и актуализация системы</div><div class="r">450+ автотестов, тесты на проникновение, акты тестирования в комплекте</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ui">
+    <div class="wrap">
+      <div class="eyebrow">Интерфейс</div>
+      <h2>Рабочее место службы безопасности</h2>
+      <p class="lead">Веб-кабинет на русском языке. Скриншоты сняты с работающей системы на демо-данных.</p>
+      <p class="hint">Нажмите на скриншот, чтобы открыть его крупно.</p>
+      <div class="shots">
+        <div class="shotrow">
+          <div class="txt"><h3>Вся картина на одном экране</h3><ul class="dots"><li>Сколько операций проверено, заблокировано и отправлено на проверку</li><li>Точность, полнота и время детекции</li><li>Последние оценки с уровнем риска и решением</li></ul></div>
+          <figure class="frame"><div class="bar"><i></i><i></i><i></i></div><img class="zoom" src="img/dashboard.jpg" alt="Главная" loading="lazy" tabindex="0"><figcaption><b>Главная</b> · сводка и последние оценки</figcaption></figure>
+        </div>
+        <div>
+          <div class="shotrow" style="margin-bottom:20px"><div class="txt"><h3>Каждое решение объяснимо</h3><p>Оператор видит, какие правила сработали и почему, и отмечает операцию как легитимную или мошенническую. Подтверждённый фрод сам попадает в чёрный список.</p></div><div></div></div>
+          <div class="pair">
+            <figure class="frame"><div class="bar"><i></i><i></i><i></i></div><img class="zoom" src="img/assessments.jpg" alt="Оценка рисков" loading="lazy" tabindex="0"><figcaption><b>Журнал оценок</b> · фильтры по риску и решению</figcaption></figure>
+            <figure class="frame"><div class="bar"><i></i><i></i><i></i></div><img class="zoom" src="img/detail.jpg" alt="Отчёт по транзакции" loading="lazy" tabindex="0"><figcaption><b>Отчёт по транзакции</b> · сработавшие правила</figcaption></figure>
+          </div>
+        </div>
+        <div class="shotrow">
+          <div class="txt"><h3>Настройка под ваш риск-профиль</h3><p>Политику безопасности меняет служба безопасности, без разработчиков.</p><ul class="dots"><li>Включение и отключение правил</li><li>Пороги, временные окна, лимиты сумм</li><li>Вес правила в общем скоре</li><li>Изменения применяются сразу и пишутся в журнал</li></ul></div>
+          <figure class="frame"><div class="bar"><i></i><i></i><i></i></div><img class="zoom" src="img/rules.jpg" alt="Правила" loading="lazy" tabindex="0"><figcaption><b>Правила</b> · пороги и веса</figcaption></figure>
+        </div>
+        <div>
+          <div class="shotrow" style="margin-bottom:20px"><div class="txt"><h3>Инциденты и реестр идентификаторов</h3><p>Блокировка автоматически открывает инцидент. Жалобы клиентов принимаются отдельно. Реестр ведётся с полной историей изменений.</p></div><div></div></div>
+          <div class="pair">
+            <figure class="frame"><div class="bar"><i></i><i></i><i></i></div><img class="zoom" src="img/incidents.jpg" alt="Инциденты" loading="lazy" tabindex="0"><figcaption><b>Инциденты</b> · расследование, приостановка, закрытие</figcaption></figure>
+            <figure class="frame"><div class="bar"><i></i><i></i><i></i></div><img class="zoom" src="img/blacklist.jpg" alt="Чёрный список" loading="lazy" tabindex="0"><figcaption><b>Чёрный список</b> · ручные, автоматические, от НБКР</figcaption></figure>
+          </div>
+        </div>
+        <div>
+          <div class="shotrow" style="margin-bottom:20px"><div class="txt"><h3>Отчёты для регулятора без ручного подсчёта</h3><p>Метрики эффективности по Главе 8 за день, месяц и квартал. Журнал действий фиксирует каждое действие оператора, из него выгружается отчёт о нештатных ситуациях в Excel.</p></div><div></div></div>
+          <div class="pair">
+            <figure class="frame"><div class="bar"><i></i><i></i><i></i></div><img class="zoom" src="img/metrics.jpg" alt="Метрики" loading="lazy" tabindex="0"><figcaption><b>Метрики эффективности</b> · форма Приложения 1</figcaption></figure>
+            <figure class="frame"><div class="bar"><i></i><i></i><i></i></div><img class="zoom" src="img/audit.jpg" alt="Журнал действий" loading="lazy" tabindex="0"><figcaption><b>Журнал действий</b> · отчёт НС за период</figcaption></figure>
+          </div>
+        </div>
+        <div class="shotrow">
+          <div class="txt"><h3>Система знает норму каждого мерчанта</h3><p>Профили строятся автоматически по истории за 90 дней и обновляются по расписанию.</p><ul class="dots"><li>Средний чек и разброс сумм</li><li>Типичная дневная активность</li><li>Известные IP-адреса и устройства</li><li>Меньше ложных срабатываний, чем при единых лимитах</li></ul></div>
+          <figure class="frame"><div class="bar"><i></i><i></i><i></i></div><img class="zoom" src="img/profiles.jpg" alt="Профили мерчантов" loading="lazy" tabindex="0"><figcaption><b>Профили мерчантов</b> · поведенческая норма</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="whitelabel">
+    <div class="wrap">
+      <div class="eyebrow">White Label и технологии</div>
+      <h2>Работает под вашим брендом и в вашем контуре</h2>
+      <div class="grid g3">
+        <div class="card"><h3>Ваш бренд</h3><ul class="dots"><li>Название панели задаётся при установке</li><li>Реквизиты компании в отчётах</li><li>Без упоминания разработчика в интерфейсе</li></ul></div>
+        <div class="card"><h3>Ваша инфраструктура</h3><ul class="dots"><li>Установка на серверах клиента</li><li>Данные не покидают ваш контур</li><li>Развёртывание в Docker одной командой</li><li>Резервное копирование штатными средствами</li></ul></div>
+        <div class="card"><h3>Простая интеграция</h3><ul class="dots"><li>REST API и готовый SDK</li><li>Совместимость с полями стандарта QR НБКР</li><li>Режим fail-open: платежи не встают при сбое</li><li>Несколько партнёров в одной установке</li></ul></div>
+      </div>
+      <div class="grid g4">
+        <div class="card"><h3>Python · FastAPI</h3><p>Асинхронный API</p></div>
+        <div class="card"><h3>PostgreSQL 15</h3><p>Оценки, инциденты, журнал</p></div>
+        <div class="card"><h3>Redis 7</h3><p>Счётчики и окна в памяти</p></div>
+        <div class="card"><h3>React</h3><p>Веб-кабинет оператора</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="package">
+    <div class="wrap">
+      <div class="eyebrow">Комплект поставки</div>
+      <h2>Всё, что нужно для запуска и проверки регулятором</h2>
+      <div class="grid g2">
+        <div class="card doc main"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div><div><h3>Антифрод-система</h3><p>Неисключительное право использования, White Label</p></div></div>
+        <div class="card doc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div><div><h3>Договор купли-продажи</h3><p>Неисключительное право на использование решения</p></div></div>
+        <div class="card doc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2h9"/></svg></div><div><h3>Акты тестирования</h3><p>Подтверждение работы правил и защищённости, Глава 9</p></div></div>
+        <div class="card doc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div><div><h3>Акт ввода в эксплуатацию</h3><p>Фиксирует запуск системы в промышленном контуре</p></div></div>
+        <div class="card doc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div><div><h3>Акт приёма-передачи</h3><p>Передача прав и комплекта поставки</p></div></div>
+        <div class="card doc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h4"/></svg></div><div><h3>Паспорт антифрод-системы</h3><p>Описание системы, правил и параметров</p></div></div>
+        <div class="card doc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V3H6.5A2.5 2.5 0 004 5.5z"/><path d="M4 19.5A2.5 2.5 0 006.5 22H20v-5"/></svg></div><div><h3>Политика противодействия мошенничеству</h3><p>Внутренний НПА по внутреннему и внешнему мошенничеству, Глава 2</p></div></div>
+        <div class="card doc"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div><h3>Внедрение</h3><p>Установка, настройка правил и запуск за 10–20 дней</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="price">
+    <div class="wrap">
+      <div class="eyebrow">Стоимость</div>
+      <h2>Стоимость и сроки</h2>
+      <div class="price">
+        <div class="pcard hero-p">
+          <div class="lbl">Антифрод-система</div>
+          <div class="amt">$10 000</div>
+          <p class="desc">Неисключительное право использования решения под вашим брендом</p>
+          <ul class="checks"><li>23 правила и веб-кабинет службы безопасности</li><li>Отчётность для НБКР</li><li>Полный комплект документов</li><li>Работа под вашим брендом</li></ul>
+        </div>
+        <div class="pcard">
+          <div class="lbl">Доработка и интеграция</div>
+          <div class="amt sm">$1 000 – 5 000</div>
+          <p class="desc">Оценивается отдельно по результатам обследования</p>
+          <ul class="checks"><li>Подключение к вашему процессингу</li><li>Доработка под действующее ПО</li><li>Зависит от архитектуры и модели бизнеса</li></ul>
+        </div>
+        <div class="pcard">
+          <div class="lbl">Срок внедрения</div>
+          <div class="amt sm">10–20</div>
+          <p class="desc">рабочих дней от подписания договора до ввода в эксплуатацию</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <div class="wrap">
+      <div class="eyebrow">Этапы внедрения</div>
+      <h2>От договора до промышленной эксплуатации за 10–20 дней</h2>
+      <div class="tl">
+        <div class="s"><div class="d">1</div><div class="days">Дни 1–2</div><h3>Договор и обследование</h3><p>Подписание договора, изучение вашего ПО и платёжных потоков</p></div>
+        <div class="s"><div class="d">2</div><div class="days">Дни 2–4</div><h3>Установка</h3><p>Развёртывание в вашем контуре, брендирование</p></div>
+        <div class="s"><div class="d">3</div><div class="days">Дни 4–14</div><h3>Интеграция</h3><p>Подключение к процессингу, доработки под действующее ПО</p></div>
+        <div class="s"><div class="d">4</div><div class="days">Дни 12–18</div><h3>Тестирование</h3><p>Настройка порогов, проверка сценариев, акты тестирования</p></div>
+        <div class="s"><div class="d">5</div><div class="days">Дни 15–20</div><h3>Запуск</h3><p>Акты ввода в эксплуатацию и приёма-передачи, передача документов</p></div>
+      </div>
+      <p class="note">Срок зависит от архитектуры действующего ПО и объёма интеграции и уточняется после обследования.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="closing">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#b6b2ff">Следующий шаг</div>
+    <h2>Покажем систему на демо-стенде с вашими сценариями</h2>
+    <p class="lead">Проведём демонстрацию, обследуем ваш платёжный контур и дадим точную оценку интеграции и сроков.</p>
+    <div class="meta">
+      <div>Правообладатель<b>ОсОО «Альберт и Азиз»</b></div>
+      <div>Решение<b>$10 000</b></div>
+      <div>Интеграция<b>$1 000 – 5 000</b></div>
+      <div>Запуск<b>10–20 дней</b></div>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Скриншот">
+  <button type="button" id="lb-close">Закрыть</button>
+  <img id="lb-img" alt="">
+</div>
+
+<script>
+  (function () {
+    var lb = document.getElementById('lightbox');
+    var img = document.getElementById('lb-img');
+    var last = null;
+    function open(el) {
+      last = el;
+      img.src = el.src; img.alt = el.alt;
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      document.getElementById('lb-close').focus();
+    }
+    function close() {
+      lb.hidden = true;
+      document.body.style.overflow = '';
+      if (last) last.focus();
+    }
+    document.querySelectorAll('img.zoom').forEach(function (el) {
+      el.addEventListener('click', function () { open(el); });
+      el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(el); } });
+    });
+    lb.addEventListener('click', function (e) { if (e.target !== img) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) close(); });
+  })();
+</script>
+
+</body>
+</html>
